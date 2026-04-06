@@ -144,8 +144,9 @@ Skor kesesuaian 5 karena topik ini menuntut pembangunan prototype, implementasi 
 
 **Jawaban:**
 > Sebelum membaca materi ini, saya mungkin hanya akan bertanya secara sederhana: "95% dari data apa?" atau "Akurasi 95% itu bagus atau tidak?" tanpa menyadari bahwa angka tersebut bisa sangat menyesatkan tergantung konteks.
-> Setelah memahami rantai distorsi, saya tidak akan lagi bertanya "Apakah hasilnya benar?" secara naif. Sebaliknya, saya akan mengajukan lima pertanyaan kritis yang menyasar setiap tahap dalam Research Trust Model:
+> Setelah memahami rantai distorsi, saya tidak akan lagi bertanya "Apakah hasilnya benar?" secara naif.
 
+Sebaliknya, saya akan mengajukan lima pertanyaan kritis yang menyasar setiap tahap dalam Research Trust Model:
 1. Tahap Reality → Data: "Data ini dikumpulkan dari mana, kapan, dan bagaimana? Apakah proses pengumpulannya bisa menyebabkan bias seleksi? Apakah datasetnya representatif terhadap populasi yang diklaim?"
 
 2. Tahap Data → Processing: "Keputusan subjektif apa yang diambil saat membersihkan data? Apakah ada outlier yang dihapus? Apakah missing value diisi dengan cara tertentu? Apakah semua keputusan ini dilaporkan secara transparan?"
