@@ -146,15 +146,15 @@ Skor kesesuaian 5 karena topik ini menuntut pembangunan prototype, implementasi 
 > Sebelum membaca materi ini, saya mungkin hanya akan bertanya secara sederhana: "95% dari data apa?" atau "Akurasi 95% itu bagus atau tidak?" tanpa menyadari bahwa angka tersebut bisa sangat menyesatkan tergantung konteks.
 > Setelah memahami rantai distorsi, saya tidak akan lagi bertanya "Apakah hasilnya benar?" secara naif. Sebaliknya, saya akan mengajukan lima pertanyaan kritis yang menyasar setiap tahap dalam Research Trust Model:
 
-Tahap Reality → Data: "Data ini dikumpulkan dari mana, kapan, dan bagaimana? Apakah proses pengumpulannya bisa menyebabkan bias seleksi? Apakah datasetnya representatif terhadap populasi yang diklaim?"
+1. Tahap Reality → Data: "Data ini dikumpulkan dari mana, kapan, dan bagaimana? Apakah proses pengumpulannya bisa menyebabkan bias seleksi? Apakah datasetnya representatif terhadap populasi yang diklaim?"
 
-Tahap Data → Processing: "Keputusan subjektif apa yang diambil saat membersihkan data? Apakah ada outlier yang dihapus? Apakah missing value diisi dengan cara tertentu? Apakah semua keputusan ini dilaporkan secara transparan?"
+2. Tahap Data → Processing: "Keputusan subjektif apa yang diambil saat membersihkan data? Apakah ada outlier yang dihapus? Apakah missing value diisi dengan cara tertentu? Apakah semua keputusan ini dilaporkan secara transparan?"
 
-Tahap Processing → Analysis: "Apakah klaim 'signifikan' disertai dengan bukti statistik yang lengkap (p-value, confidence interval, effect size)? Apakah metode statistik yang digunakan sesuai dengan jenis data dan asumsinya?"
+3. Tahap Processing → Analysis: "Apakah klaim 'signifikan' disertai dengan bukti statistik yang lengkap (p-value, confidence interval, effect size)? Apakah metode statistik yang digunakan sesuai dengan jenis data dan asumsinya?"
 
-Tahap Analysis → Inference: "Apakah peneliti membedakan antara korelasi dan kausalitas? Apakah ada variabel perancu (confounding variables) yang tidak diukur tetapi bisa menjelaskan hasil?"
+4. Tahap Analysis → Inference: "Apakah peneliti membedakan antara korelasi dan kausalitas? Apakah ada variabel perancu (confounding variables) yang tidak diukur tetapi bisa menjelaskan hasil?"
 
-Tahap Inference → Knowledge: "Apakah rekomendasi peneliti melampaui apa yang benar-benar didukung oleh data? Apakah mereka mengakui keterbatasan penelitian mereka?"
+5. Tahap Inference → Knowledge: "Apakah rekomendasi peneliti melampaui apa yang benar-benar didukung oleh data? Apakah mereka mengakui keterbatasan penelitian mereka?"
 
 Kesimpulannya: Sebuah klaim "95% akurat" tidak ada artinya tanpa mengetahui distorsi apa saja yang mungkin terjadi di kelima tahap transformasi. Saya sekarang akan membaca paper dengan sikap healthy skepticism—bukan untuk mencari-cari kesalahan, tetapi untuk memahami dengan jujur apa yang benar-benar diketahui dan apa yang masih belum diketahui dari penelitian tersebut.
 
