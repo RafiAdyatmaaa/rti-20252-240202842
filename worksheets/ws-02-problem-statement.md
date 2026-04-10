@@ -86,14 +86,15 @@ Fenomena → Problem
   Variabel yang terukur             : Throughput, Latency, Jitter, dan Fairness Index
 
 Problem Quality Check
-  [x] Clarity — Apakah satu orang membaca akan paham? *Sangat Jelas*. Masalah ini mudah dipahami karena merupakan fenomena umum. Fokusnya spesifik: korelasi antara jumlah pengguna (density) dengan penurunan kinerja (performance degradation).
-  [x] Measurability — Apakah ada metrik kuantitatif? *Sangat Terukur*. Masalah ini memiliki metrik kuantitatif yang baku dalam standar IEEE 802.11, seperti Throughput (bps), Latency (ms), dan Packet Loss Rate (%).
-  [x] Relevance — Apakah penting untuk domain? *Sangat Relevan*. Di bidang TI, efisiensi spektrum dan manajemen kepadatan adalah tantangan utama, terutama untuk implementasi Smart City, IoT, dan kampus digital.
-  [x] Testability — Apakah bisa gagal? *Dapat Diuji*. Hipotesis penelitian ini bisa gagal. Misalnya, jika setelah dipasang algoritma baru ternyata latency tetap tinggi, berarti ada faktor lain (seperti interferensi fisik) yang lebih dominan.
-  [x] Impact — Apakah ada kontribusi jika terjawab? *Kontribusi Tinggi*. Jika terjawab, penelitian ini bisa menjadi acuan bagi Admin Jaringan untuk mengatur konfigurasi Access Point agar lebih adil (fairness) bagi semua pengguna.
+  [x] Clarity — Apakah satu orang membaca akan paham? Sangat Jelas. Masalah ini mudah dipahami karena merupakan fenomena umum. Fokusnya spesifik: korelasi antara jumlah pengguna (density) dengan penurunan kinerja (performance degradation).
+  [x] Measurability — Apakah ada metrik kuantitatif? Sangat Terukur. Masalah ini memiliki metrik kuantitatif yang baku dalam standar IEEE 802.11, seperti Throughput (bps), Latency (ms), dan Packet Loss Rate (%).
+  [x] Relevance — Apakah penting untuk domain? Sangat Relevan. Di bidang TI, efisiensi spektrum dan manajemen kepadatan adalah tantangan utama, terutama untuk implementasi Smart City, IoT, dan kampus digital.
+  [x] Testability — Apakah bisa gagal? Dapat Diuji. Hipotesis penelitian ini bisa gagal. Misalnya, jika setelah dipasang algoritma baru ternyata latency tetap tinggi, berarti ada faktor lain (seperti interferensi fisik) yang lebih dominan.
+  [x] Impact — Apakah ada kontribusi jika terjawab? Kontribusi Tinggi. Jika terjawab, penelitian ini bisa menjadi acuan bagi Admin Jaringan untuk mengatur konfigurasi Access Point agar lebih adil (fairness) bagi semua pengguna.
 
 Problem Statement (1 paragraf):
   Meskipun ketersediaan akses WiFi di area publik meningkat, performa jaringan sering kali mengalami degradasi signifikan saat jumlah pengguna aktif bertambah, yang ditandai dengan lonjakan latency dan penurunan throughput yang drastis. Masalah ini berakar pada manajemen sumber daya radio dan alokasi bandwidth yang masih bersifat statis, sehingga tidak mampu beradaptasi terhadap fluktuasi beban trafik yang tinggi (kongesti). Penelitian ini bertujuan untuk menganalisis dan mengoptimalkan mekanisme alokasi sumber daya dinamis guna meningkatkan stabilitas Quality of Service (QoS), sehingga pengalaman pengguna tetap konsisten meskipun dalam kondisi kepadatan jaringan yang ekstrim.
+
 ```
 
 ---
