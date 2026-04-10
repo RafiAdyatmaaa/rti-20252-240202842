@@ -124,7 +124,7 @@ Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
 | Komponen | Deskripsi |
 |----------|----------|
-| Input | *Jumlah perangkat terhubung, permintaan data (HTTP/Streaming), konfigurasi SSID* |
+| Input | Jumlah perangkat terhubung, permintaan data (HTTP/Streaming), konfigurasi SSID |
 | Process | Otentikasi pengguna, routing paket data, manajemen antrian (queueing), transmisi sinyal radio |
 | Output | Akses internet ke perangkat, data yang berhasil terkirim |
 | Outcome | Kecepatan akses yang stabil dan pengalaman pengguna yang lancar (User Experience) |
