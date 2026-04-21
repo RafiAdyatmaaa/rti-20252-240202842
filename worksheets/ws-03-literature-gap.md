@@ -102,20 +102,20 @@ Baseline Selection:
 
 Gunakan topik riset dari WS-02. Cari minimal 5 paper relevan menggunakan Google Scholar atau database lain.
 
-**Topik riset:** ________________________________________
-**Query pencarian:** ____________________________________
-**Database:** ___________________________________________
+**Topik riset:** Optimasi Quality of Service (QoS) pada Jaringan WiFi Kepadatan Tinggi.
+**Query pencarian:** Optimasi QoS WiFi AND Kepadatan Pengguna AND Manajemen Bandwidth
+**Database:** Google Scholar (ID), Garuda (Garba Rujukan Digital).
 
 | # | Study | Tahun | Method | Dataset | Result | Limitasi |
 |---|-------|-------|--------|---------|--------|----------|
-| 1 | *Contoh: Rahman et al.* | *2023* | *CNN* | *ImageNet subset* | *Acc 91%* | *Hanya 3 kelas* |
-| 2 | | | | | | |
-| 3 | | | | | | |
-| 4 | | | | | | |
-| 5 | | | | | | |
+| 1 | Saputra dkk. | 2022 | Hierarchical Token Bucket (HTB) | Jaringan Kampus | Bandwidth terbagi rata sesuai priority | Throughput menurun saat beban puncak |
+| 2 | Kurniawan & Fitri | 2023 | PCQ (Per Connection Queue) | Hotspot Cafe | Fairness akses terjaga bagi setiap user | Belum otomatis mendeteksi jenis trafik (video vs teks) |
+| 3 | Ramadhan et al | 2021 | Analisis Parameter QoS (ITU-T G.1010) | WiFi Area Publik | Identifikasi penyebab delay tinggi | Hanya observasi, belum memberikan solusi otomasi |
+| 4 | Wijaya & Utomo | 2024 | Load Balancing Method (Nth) | Lab Komputer | Beban trafik tersebar ke 2 ISP | Implementasi sulit pada perangkat Single-AP |
+| 5 | Hidayat dkk. | 2023 | Algoritma Round Robin | Jaringan Sekolah | Penurunan packet loss sebesar 12% | Respon lambat terhadap perubahan jumlah user ekstrem |
 
-**Pola yang terlihat — Metode dominan:** ___________________
-**Limitasi yang berulang:** ______________________________
+**Pola yang terlihat — Metode dominan:** Penggunaan fitur queue tree (HTB/PCQ) pada Mikrotik sebagai solusi manajemen trafik di lapangan.
+**Limitasi yang berulang:** Penentuan limit bandwidth masih sering dilakukan secara statis (angka tetap), sehingga kurang adaptif terhadap fluktuasi jumlah pengguna yang dinamis.
 
 ---
 
@@ -125,14 +125,14 @@ Berdasarkan tabel di Latihan 1, identifikasi gap.
 
 | Jenis Gap | Ditemukan? | Gap Statement |
 |-----------|-----------|---------------|
-| Performance Gap | [ ] Ya / [ ] Tidak | *Contoh: Akurasi turun di bawah 80% untuk kelas minoritas* |
-| Method Gap | [ ] Ya / [ ] Tidak | |
-| Data Gap | [ ] Ya / [ ] Tidak | |
-| Context Gap | [ ] Ya / [ ] Tidak | |
+| Performance Gap | Ya | Metode HTB statis gagal menjaga latency di bawah 150ms saat jumlah pengguna aktif melebihi kapasitas desain awal. |
+| Method Gap | Ya | Belum banyak riset lokal yang mengintegrasikan algoritma adaptif yang bisa mengubah limit secara otomatis berdasarkan jumlah user yang terdeteksi secara real-time |
+| Data Gap | Tidak | Data log trafik dari lingkungan kampus dan sekolah di Indonesia sudah cukup banyak terdokumentasi |
+| Context Gap | Ya | Kurangnya pengujian pada perangkat WiFi murah (low-cost) yang banyak digunakan di UMKM atau sekolah di Indonesia. |
 
-**Gap utama yang dipilih:** _____________________________
+**Gap utama yang dipilih:** Method Gap & Context Gap.
 **Mengapa gap ini penting (bukan sekadar "belum ada yang meneliti")?**
-> ___________________________________________________
+> Kebanyakan solusi di jurnal internasional menggunakan AI tingkat tinggi yang butuh server mahal. Di Indonesia, kita butuh metode yang pintar tapi cukup ringan untuk dijalankan di router yang ada (misalnya Mikrotik atau OpenWrt) agar bisa langsung diterapkan di sekolah atau cafe tanpa beli alat baru.
 
 ---
 
@@ -142,11 +142,11 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 
 | # | Baseline | Mengapa Relevan | Mengapa Representatif | Apakah SOTA? | Sumber |
 |---|----------|----------------|----------------------|-------------|--------|
-| 1 | *Contoh: RF + TF-IDF* | *Task sama: klasifikasi teks* | *Dipakai 6 dari 10 paper* | *Bukan, tapi common practice* | *Lee et al., 2022* |
-| 2 | | | | | |
+| 1 | HTB (Hierarchical Token Bucket) | Metode standar yang digunakan untuk membagi bandwidth secara hierarkis. | Merupakan common practice administrator jaringan di Indonesia. | Bukan | Saputra dkk., 2022 |
+| 2 | PCQ (Per Connection Queue) | Queue)	Metode terbaru untuk membagi bandwidth secara adil otomatis. | Standar optimasi terkini untuk manajemen pengguna banyak. | Ya (State-of-the-art lokal) | Kurniawan & Fitri, 2023 |
 
-**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [ ] Tidak
-> Justifikasi: ________________________________________
+**Apakah pemilihan baseline ini bisa dianggap straw man?** Tidak
+> Justifikasi: Karena saya membandingkan metode usulan saya dengan metode yang memang saat ini menjadi standar tertinggi di implementasi jaringan lokal di Indonesia.
 
 ---
 
@@ -155,5 +155,5 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 > Apa perbedaan antara "belum ada yang meneliti ini" (klaim tanpa bukti) dengan research gap yang valid? Bagaimana cara membuktikan bahwa sebuah gap benar-benar ada?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Klaim "belum ada" seringkali muncul karena malas mencari.
+> Gap yang valid muncul setelah kita membaca 5-10 jurnal dan menemukan bahwa: "Oke, semua orang pakai HTB, tapi HTB mereka punya kelemahan di bagian X".
