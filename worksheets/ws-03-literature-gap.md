@@ -61,39 +61,44 @@ Membandingkan deep learning 2024 dengan decision tree sederhana tanpa justifikas
 ```
 LITERATURE MAPPING
 
-Topik      : ____________________
-Database   : ____________________
-Query      : ____________________
-Tahun      : ____________________
-Hasil awal : ____ paper → Screening → ____ paper final
+Topik      : Optimasi QoS Jaringan WiFi High-Density Menggunakan Dynamic Bandwidth Management.
+Database   : Google Scholar Indonesia / Garuda Ristekdikti.
+Query      : "Optimasi QoS WiFi" AND "Kepadatan Pengguna" AND "Manajemen Bandwidth".
+Tahun      : 2021 – 2024.
+Hasil awal : 45 paper → Screening → 5 paper final
 
 Literature Matrix (concept-centric):
 
 | Study | Tahun | Method | Data | Result | Limitation |
 |-------|-------|--------|------|--------|------------|
-|       |       |        |      |        |            |
-
+| Saputra dkk | 2022 | HTB (Hierarchical Token Bucket) | Log Trafik Kampus | Bandwidth terbagi rata | Throughput turun saat beban puncak |
+| Kurniawan & Fitri | 2023 | PCQ (Per Connection Queue) | Hotspot Cafe | Fairness terjaga | Tidak mendeteksi jenis trafik otomatis |
+| Ramadhan et al. | 2021 | Analisis Parameter QoS | WiFi Area Publik | Identifikasi penyebab delay | Hanya observasi, tidak ada solusi otomatis |  
+| Wijaya & Utomo | 2024 | Load Balancing (Nth) | Lab Komputer | Trafik tersebar ke 2 ISP | Sulit diimplementasikan di Single-AP |
+| Hidayat dkk. | 2023 | Algoritma Round Robin | Jaringan Sekolah | Packet loss turun 12% | Respon lambat pada lonjakan user ekstrem |
 Pola yang ditemukan:
-  Metode dominan     : ____________________
-  Dataset umum       : ____________________
-  Limitasi berulang  : ____________________
+  Metode dominan     : Implementasi fitur antrian (Queueing) Mikrotik seperti HTB dan PCQ.
+  Dataset umum       : Data log trafik dari lingkungan pendidikan dan area publik lokal.
+  Limitasi berulang  : Penentuan limit bandwidth masih bersifat statis, kurang adaptif terhadap fluktuasi jumlah pengguna secara real-time.
 
 GAP IDENTIFICATION
 
 Gap 1: [Jenis: performance / method / data / context]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+  Deskripsi    : Belum adanya mekanisme manajemen bandwidth yang dapat menyesuaikan limit secara otomatis berdasarkan jumlah pengguna aktif secara real-time.
+  Bukti        : Mayoritas studi (Saputra, 2022; Kurniawan, 2023) menggunakan nilai limit statis yang diinput manual.
+  Signifikansi : Otomasi akan mencegah degradasi performa total saat terjadi lonjakan pengguna yang tidak terduga.
 
 Gap 2: [Jenis: ____]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+  Deskripsi    : Terbatasnya optimasi pada perangkat WiFi low-end yang memiliki keterbatasan memori namun melayani pengguna padat.
+  Bukti        : Studi Wijaya (2024) membutuhkan infrastruktur ISP ganda yang jarang tersedia di lokasi publik kecil/UMKM.
+  Signifikansi : Memberikan solusi yang aplikatif dan murah bagi infrastruktur IT di Indonesia tanpa perlu penggantian perangkat hardware.
 
 Baseline Selection:
 | Baseline | Relevansi | Representatif | Source |
 |----------|-----------|---------------|--------|
-|          |           |               |        |
+| Static HTB | Dasar pembagian bandwidth | Standar konfigurasi umum di Indonesia | Saputra dkk., 2022 |
+| PCQ Method | Optimasi pembagian adil | Teknik manajemen user banyak yang paling populer | Kurniawan & Fitri, 2023 |
+
 ```
 
 ---
