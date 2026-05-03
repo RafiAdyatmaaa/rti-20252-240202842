@@ -103,21 +103,21 @@ Hypothesis Pair:
 
 Gunakan gap yang ditemukan di WS-03. Transformasikan menjadi Research Question.
 
-**Gap dari WS-03:** ____________________________________
+**Gap dari WS-03:** Kurangnya mekanisme pembagian bandwidth yang adaptif (otomatis) terhadap jumlah pengguna aktif secara real-time pada perangkat jaringan menengah ke bawah.
 
 **RQ versi pertama (tulis bebas):**
-> ___________________________________________________
+> "Apakah penerapan algoritma Dynamic-Limit pada metode Per Connection Queue (PCQ) mampu menghasilkan nilai Throughput yang lebih stabil dibandingkan PCQ statis saat jumlah pengguna aktif meningkat dari 20 menjadi 50 user pada perangkat Mikrotik?"
 
 **Evaluasi RQ:**
 
 | Komponen | Ada? | Isi |
 |----------|------|-----|
-| Metode spesifik | *Contoh: Ya — CNN vs RF* | |
-| Metrik terukur | | |
-| Baseline | | |
-| Dataset/konteks | | |
+| Metode spesifik | Ya | Algoritma Dynamic-Limit pada PCQ |
+| Metrik terukur | Ya | Throughput (Mbps) |
+| Baseline | Ya | PCQ Statis (konvensional) |
+| Dataset/konteks | Ya | Jaringan Mikrotik dengan beban 20-50 user |
 
-**Tipe RQ:** [ ] Comparison / [ ] Improvement / [ ] Exploratory
+**Tipe RQ:** Improvement
 
 **RQ versi revisi (setelah evaluasi):**
 > ___________________________________________________
@@ -130,11 +130,11 @@ Rumuskan pasangan hipotesis dari RQ di Latihan 1.
 
 | Komponen | Isi |
 |----------|-----|
-| H₀ | *Contoh: Tidak ada perbedaan signifikan F1-Score antara CNN dan RF pada dataset CIC-MalMem-2022* |
-| H₁ | |
-| Metrik | |
-| Threshold | |
-| Justifikasi threshold | |
+| H₀ | Tidak ada perbedaan signifikan pada nilai Throughput antara PCQ dengan Dynamic-Limit dibandingkan PCQ statis saat kepadatan pengguna meningkat. |
+| H₁ | Metode PCQ dengan Dynamic-Limit menghasilkan Throughput rata-rata yang lebih tinggi secara signifikan (minimal 20% lebih baik) dibandingkan PCQ statis pada kondisi padat. |
+| Metrik | Average Throughput (Mbps) dan Jitter (ms). |
+| Threshold | P-Value < 0.05 (Uji T atau Wilcoxon). |
+| Justifikasi threshold | Batas standar signifikansi statistik untuk menolak hipotesis nol dalam riset rekayasa jaringan. |
 
 **Apakah hipotesis ini falsifiable?** [ ] Ya / [ ] Tidak
 > Bagaimana cara membuktikannya salah? ___________________
@@ -147,14 +147,14 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 | Tahap | Isi |
 |-------|-----|
-| RQ | *Contoh: Apakah CNN menghasilkan F1-Score lebih tinggi dari RF...* |
-| Variable (IV) | *Contoh: Jenis algoritma (CNN vs RF)* |
-| Variable (DV) | |
-| Metric | |
-| Data source | |
-| Analysis method | |
+| RQ | Perbandingan efektivitas Dynamic-Limit PCQ vs PCQ Statis terhadap stabilitas Throughput. |
+| Variable (IV) | Pengaturan limitasi bandwidth (Statis vs Dinamis/Adaptif). |
+| Variable (DV) | Kualitas jaringan (Throughput dan Latency). |
+| Metric | Megabits per second (Mbps) dan milidetik (ms). |
+| Data source | Pengujian langsung (Live Test) pada Access Point menggunakan perangkat lunak traffic generator. |
+| Analysis method | Analisis deskriptif (tabel/grafik) dan uji beda statistik (T-Test) untuk melihat konsistensi performa. |
 
-**Apakah rantai lengkap?** [ ] Ya / [ ] Tidak
+**Apakah rantai lengkap?** Ya
 > Jika tidak, tahap mana yang perlu direvisi? ______________
 
 ---
@@ -163,6 +163,6 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 > Ambil satu judul skripsi/paper yang pernah dibaca. Coba ekstrak RQ-nya. Apakah RQ tersebut memenuhi semua komponen (metode, metrik, baseline, konteks)? Jika tidak, apa yang hilang?
 
-**Judul:** _____________________________________________
-**RQ yang diekstrak:** __________________________________
-**Komponen yang hilang:** _______________________________
+**Judul:** Analisis QoS pada Jaringan WiFi Menggunakan Metode PCQ di Cafe X.
+**RQ yang diekstrak:** Bagaimana pengaruh penerapan metode PCQ terhadap kecepatan internet pengguna di Cafe X?
+**Komponen yang hilang:** RQ tersebut tidak menyebutkan metrik spesifik (apa yang diukur?), tidak ada baseline (dibandingkan dengan apa?), dan tidak menyebutkan target beban pengguna yang jelas. RQ ini cenderung seperti pertanyaan survei biasa, bukan riset eksperimental yang mendalam.
