@@ -66,14 +66,14 @@ Metrik harus ditentukan **sebelum** eksperimen. Memilih metrik setelah melihat d
 ```
 VARIABLE & METRIC DEFINITION
 
-Research Question: ____________________
+Research Question: Apakah penerapan algoritma Dynamic-Limit pada metode PCQ mampu menghasilkan Throughput yang lebih stabil dibandingkan PCQ statis saat jumlah pengguna meningkat dari 20 ke 50 user pada router Mikrotik?
 
 | Variabel | Tipe | Konsep | Metrik | Skala | Satuan | Cara Mengukur | Justifikasi |
 |----------|------|--------|--------|-------|--------|---------------|-------------|
-|          | IV   |        |        |       |        |               |             |
-|          | DV   |        |        |       |        |               |             |
-|          | CV   |        |        |       |        |               |             |
-
+| Metode Limitasi | IV   | Teknik pembagian bandwidth | Kategori: Statis vs Dynamic-Limit | Nominal | - | Mengubah konfigurasi pada menu Queue Mikrotik. | Untuk membandingkan cara lama dan cara baru yang ditawarkan |
+| Kualitas Koneksi | DV   | Kecepatan data aktual | Average Throughput | Ratio | Mbps | Menggunakan alat ukur trafik (seperti Iperf atau Btools). | Metrik utama untuk membuktikan apakah internet benar-benar jadi cepat atau tidak |
+| Responsivitas | DV   | Kelancaran akses | Latency (Ping) | Ratio | ms | Mengirim paket data uji ke server lokal. | Mengukur tingkat "lag" yang sering dikeluhkan saat WiFi ramai. |
+| Kepadatan User | CV | Beban pengguna | Jumlah perangkat aktif | Ratio | User | Membatasi jumlah user yang terhubung di WiFi uji. | Memastikan perbandingan dilakukan pada kondisi beban yang adil dan sama. |
 Alignment Check:
   RQ → Concept → Variable → Metric → Data → Result
   [ ] Setiap langkah terdokumentasi
