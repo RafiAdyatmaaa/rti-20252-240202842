@@ -113,14 +113,14 @@ Evaluasi desain sistem terhadap 4 prinsip.
 
 | Prinsip | Status | Bukti / Penjelasan |
 |---------|--------|-------------------|
-| Traceability | ✅ |  |
-| Modularity | | |
-| Controllability | | |
-| Measurability | | |
+| Traceability | ✅ | Saya sudah memberi label kepada semua script Mikrotik, seperti "queue-static" dan "queue-dynamic", agar jelas mana yang sedang diuji. |
+| Modularity | ✅ | Algoritma Dynamic-Limit dibuat dalam modul script yang berbeda, jadi jika Anda ingin mengubah metode, Anda tidak perlu mengubah konfigurasi internet dasar. |
+| Controllability | ✅ | Dengan menggunakan variabel dalam script, Anda dapat mengubah parameter seperti batas maksimal dan jumlah user tanpa perlu menginstal ulang router. |
+| Measurability | ✅ | Agar data tidak hilang, router diatur untuk mengirimkan log performa ke komputer penguji setiap detik. |
 
-**Prinsip mana yang paling sulit dipenuhi?** _______________
+**Prinsip mana yang paling sulit dipenuhi?** Controllability.
 **Strategi untuk mengatasinya:**
-> ___________________________________________________
+> Seringkali, pengguna asli masuk-keluar secara acak. Saya menggunakan simulasi perangkat (dummy client) untuk memastikan bahwa jumlah pengguna tetap stabil di antara dua puluh atau lima puluh, sesuai dengan rencana pengujian.
 
 ---
 
@@ -146,5 +146,5 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 > Apa risiko jika sistem dibangun seperti produk (monolitik, fitur lengkap) lalu baru dilakukan eksperimen? Mengapa arsitektur modular penting untuk riset?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Jika kita membuat sistem yang mirip dengan produk jadi (monolitik) yang belum pernah dicoba sebelumnya, risikonya adalah akan sulit untuk menemukan "bagian mana sih yang sebenarnya membuat internet menjadi cepat?" Semuanya berubah menjadi campuran. Kita akan bingung apakah ada masalah dengan setting router, jumlah user, atau algoritma yang tidak berfungsi jika terjadi masalah.
+> Karena kita membutuhkan isolasi variabel, arsitektur modular sangat penting untuk penelitian. Kita harus dapat mencoba menghapus satu fitur tanpa mengganggu fitur lain. Oleh karena itu, kita dapat dengan yakin mengatakan: "Fitur A inilah yang bikin Throughput naik 20%" karena data yang kami terima benar.
