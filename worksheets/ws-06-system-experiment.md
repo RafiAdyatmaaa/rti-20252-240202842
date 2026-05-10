@@ -94,16 +94,16 @@ Experimental Setup:
 
 Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
 
-**RQ:** __________________________________________________
+**RQ:** Apakah saat jumlah pengguna Mikrotik yang aktif meningkat dari dua puluh menjadi lima puluh, algoritma batas dinamis dapat menghasilkan nilai throughput yang lebih stabil daripada metode PCQ statis?
 
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi / Pengukuran |
 |----------|------|-----------------|---------------------------|
-| *Contoh: Jenis model* | *IV* | *Modul classifier (swap RF ↔ CNN)* | *Ganti config `model_type`* |
-| | DV | | |
-| | CV | | |
+| metode eliminasi | IV | Script / Konfigurasi Queue Tree | Mengganti profil dari PCQ Statis ke Dynamic-Limit lewat terminal Mikrotik. |
+| Kualitas Jaringan | DV | Traffic Monitor & Logging | Mencatat data Throughput (Mbps) secara otomatis ke file .csv. |
+| Beban Pengguna | CV | DHCP Server / Access Point | Membatasi jumlah user yang bisa terhubung (max 20 atau 50) lewat settingan AP |
 
-**Apakah semua variabel bisa di-map?** [ ] Ya / [ ] Tidak
-> Jika tidak, komponen apa yang perlu ditambahkan? _________
+**Apakah semua variabel bisa di-map?** Ya
+> Jika tidak, komponen apa yang perlu ditambahkan? Semua variabel riset sudah ditempatkan di dalam konfigurasi router, sehingga kami memiliki kontrol penuh selama pengujian.
 
 ---
 
@@ -113,7 +113,7 @@ Evaluasi desain sistem terhadap 4 prinsip.
 
 | Prinsip | Status | Bukti / Penjelasan |
 |---------|--------|-------------------|
-| Traceability | *Contoh: ✅ — setiap modul punya label variabel* | |
+| Traceability | ✅ |  |
 | Modularity | | |
 | Controllability | | |
 | Measurability | | |
