@@ -128,16 +128,16 @@ Evaluasi desain sistem terhadap 4 prinsip.
 
 Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 
-| Kondisi | Komponen A | Komponen B | Komponen C | Hasil yang Diharapkan |
+| Kondisi | Komponen A (Dynamic PCQ) | Komponen B (User Detection) | Komponen C (Priority Traffic)| Hasil yang Diharapkan |
 |---------|-----------|-----------|-----------|----------------------|
-| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | *Baseline penuh* |
-| – A | ❌ (ganti RF) | ✅ | ✅ | |
-| – B | ✅ | ❌ (tanpa temporal) | ✅ | |
-| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | |
+| Full | ✅aktif | ✅aktif | ✅aktif | Koneksi paling stabil dan adil. |
+| – A | ❌ (ganti statis) | ✅aktif | ✅aktif | Internet mulai melambat saat user nambah |
+| – B | ✅aktif | ❌ (manual input) | ✅aktif | Sistem telat merespon saat user membludak |
+| – C | ✅aktif | ✅aktif | ❌ (tanpa prioritas) | Download lancar tapi video call patah-patah |
 
-**Komponen mana yang diprediksi paling berkontribusi?** _____
+**Komponen mana yang diprediksi paling berkontribusi?** Komponen B (User Detection)
 **Mengapa?**
-> ___________________________________________________
+> Algoritma Dynamic PCQ tidak tahu kapan harus memperketat atau melonggarkan bandwidth jika tidak ada deteksi user yang akurat. Ini adalah pusat penelitian saya.
 
 ---
 
