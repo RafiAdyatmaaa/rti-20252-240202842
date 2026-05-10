@@ -91,11 +91,11 @@ Gunakan RQ dari WS-04. Definisikan variabel dan metriknya.
 
 | Variabel | Tipe | Konsep Abstrak | Metrik Konkret | Skala (NOIR) | Satuan |
 |----------|------|---------------|----------------|-------------|--------|
-| *Contoh: Jenis model* | *IV* | *Pendekatan klasifikasi* | *Categorical: CNN vs RF* | *Nominal* | *—* |
-| | DV | | | | |
-| | CV | | | | |
+| Metode Limitasi | IV | Pendekatan manajemen bandwith | kategori: PCQ Statis vs Dynamic-Limit PCQ | Nominal | — |
+| Kualitas Jaringan | DV | Kecepatan transfer data nyata | Average Throughput | Ratio | Mbps |
+| Beban Pengguna | CV | Intensitas kepadatan jaringan | Jumlah perangkat terhubung | Ratio | User |
 
-**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [ ] Tidak
+**Apakah ada lompatan logis dalam rantai?** Tidak
 > Jika ya, di mana? ____________________________________
 
 ---
@@ -106,15 +106,15 @@ Evaluasi metrik DV yang dipilih di Latihan 1 menggunakan 3 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Representative | *Contoh: 4 — F1-Score mewakili keseimbangan precision-recall* | |
-| Sensitive | | |
-| Feasible | | |
+| Representative | 5 | Throughput mewakili kapasitas data aktual yang diterima pengguna, sesuai dengan keluhan lemot pada masalah awal. |
+| Sensitive | 4 | Metrik ini sangat peka terhadap perubahan limit pada queue router dan kepadatan trafik. |
+| Feasible | 5 | Data sangat mudah dikumpulkan melalui fitur Traffic Monitor bawaan Mikrotik atau tools seperti Btools dan Iperf. |
 
-**Apakah perlu secondary metric?** [ ] Ya / [ ] Tidak
-> Jika ya, apa dan mengapa? _____________________________
+**Apakah perlu secondary metric?** Ya
+> Jika ya, apa dan mengapa? Latency (ms) dan Jitter (ms). Karena internet terasa lambat bukan hanya karena kecepatan turun, tapi juga karena respons yang lama saat banyak pengguna.
 
 **Contoh kasus ceiling effect untuk metrik ini:**
-> ___________________________________________________
+> Kondisi di mana total bandwidth dari ISP memang sudah habis terpakai (limit fisik), sehingga metode optimasi apa pun tidak akan menunjukkan kenaikan Throughput lagi.
 
 ---
 
@@ -124,10 +124,10 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 
 | Dimensi | Pertanyaan | Jawaban | Strategi Mitigasi |
 |---------|-----------|---------|------------------|
-| Completeness | *Apakah semua data point terkumpul?* | | |
-| Consistency | *Apakah ada kontradiksi internal?* | | |
-| Validity | *Apakah benar-benar mengukur yang dimaksud?* | | |
-| Representativeness | *Apakah sampel mewakili populasi target?* | | |
+| Completeness | *Apakah semua data point terkumpul?* | Ya, selama durasi pengujian (misal 10 menit per sesi). | Gunakan auto-logging untuk mencatat data per detik tanpa jeda. |
+| Consistency | *Apakah ada kontradiksi internal?* | Mungkin ada lonjakan data tiba-tiba karena background update | Lakukan pengujian di lingkungan terkontrol dengan jenis trafik yang seragam. |
+| Validity | *Apakah benar-benar mengukur yang dimaksud?* | Ya, Throughput mengukur kecepatan real. | Kalibrasi alat ukur dan pastikan tidak ada aplikasi lain yang berjalan di latar belakang perangkat uji |
+| Representativeness | *Apakah sampel mewakili populasi target?* | Ya, simulasi 20-50 user mewakili kondisi cafe/kantor kecil. | Gunakan berbagai jenis perangkat (ponsel dan laptop) dalam pengujian. |
 
 ---
 
@@ -136,5 +136,5 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 > Mengapa memilih metrik setelah melihat data dianggap p-hacking? Apa bedanya dengan eksplorasi data yang sah?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Karena peneliti cenderung memilih metrik yang hanya menunjukkan hasil yang "bagus" atau signifikan secara statistik untuk mendukung hipotesisnya, meskipun metrik tersebut mungkin tidak relevan sejak awal, memilih metrik setelah melihat data dianggap sebagai p-hacking. Ini merusak integritas penelitian karena hasilnya menjadi bias.
+> Ekplorasi data yang sah berbeda dari eksplorasi data yang sah dalam hal tujuan dan pelaporannya. Meskipun penelitian dilakukan untuk menemukan pola baru atau anomali yang tidak terduga, kesimpulan utama penelitian tetap harus didasarkan pada metrik awal.
