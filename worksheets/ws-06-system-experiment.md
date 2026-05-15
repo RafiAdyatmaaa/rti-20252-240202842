@@ -67,25 +67,25 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ```
 SYSTEM-EXPERIMENT MAPPING
 
-Research Question: ____________________
+Research Question: Apakah penerapan algoritma Dynamic-Limit pada metode Per Connection Queue (PCQ) mampu menghasilkan nilai Throughput yang lebih stabil dibandingkan PCQ statis saat jumlah pengguna aktif meningkat dari 20 menjadi 50 user pada perangkat Mikrotik?
 
 Variable → Component Mapping:
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
 |----------|------|-----------------|---------------------------|
-|          | IV   |                 |                           |
-|          | DV   |                 |                           |
-|          | CV   |                 |                           |
+| Metode Limitasi Bandwidth | IV   | Modul Queue Tree / Simple Queue | Mengganti profil settingan antara PCQ Statis dan script Dynamic-Limit |
+| Stabilitas Jaringan | DV   | Traffic Monitor & Logging Tool | Mengambil data Throughput (Mbps) secara real-time lewat tool Torch atau Graphing |
+| Kepadatan Pengguna | CV   | DHCP Server & Access Point | Membatasi jumlah koneksi yang masuk (max 20 dan max 50) pada settingan router |
 
 4 Prinsip Desain:
-  [ ] Traceability — Setiap komponen bisa ditelusuri ke variabel
-  [ ] Variable Isolation — IV bisa diubah tanpa mengubah CV
-  [ ] Measurement Integration — Pengukuran DV built-in
-  [ ] Reproducibility — Setup bisa direkonstruksi
+  [ ] Traceability — Limit dibuat khusus untuk menjawab variabel IV dalam penelitian.
+  [ ] Variable Isolation — Perubahan algoritma (IV) tidak akan mengubah kapasitas bandwidth ISP maupun jenis router yang digunakan (CV).
+  [ ] Measurement Integration — Sistem dikonfigurasi untuk mencatat log performa secara otomatis ke memory router/disk.
+  [ ] Reproducibility — Seluruh konfigurasi diekspor menjadi file .rsc agar eksperimen bisa diulang di perangkat yang sama.
 
 Experimental Setup:
-  Input data     : ____________________
-  Parameter      : ____________________
-  Output format  : ____________________
+  Input data     : Simulasi trafik data (seperti download file atau streaming video) dari perangkat klien.
+  Parameter      : Total bandwidth ISP (misal: 50 Mbps), interval update script (misal: tiap 5 detik), dan jumlah simulasi user (20 & 50).
+  Output format  : Log data dalam format .csv atau tabel yang berisi angka Throughput, Latency, dan Jitter per sesi pengujian.
 ```
 
 ---
