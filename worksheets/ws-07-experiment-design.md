@@ -106,13 +106,13 @@ Statistical Plan:
 
 Susun desain eksperimen berdasarkan RQ, variabel, dan sistem dari WS-04 sampai WS-06.
 
-**RQ:** __________________________________________________
-**Tipe eksperimen:** [ ] Comparison / [ ] Ablation / [ ] Parameter
+**RQ:** Apakah penerapan algoritma Dynamic-Limit pada metode PCQ mampu menghasilkan nilai Throughput yang lebih stabil dibandingkan PCQ statis saat jumlah pengguna aktif meningkat dari 20 menjadi 50 user pada perangkat Mikrotik?
+**Tipe eksperimen:** [ ] Comparison (Membandingkan metode lama vs metode baru)
 
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control | *Contoh: RF baseline dari literatur* | *RF* | *Dataset X, 80:20 split, seed 42* |
-| Treatment | | | |
+| Control | Menggunakan settingan standard PCQ yang biasa dipakai di cafe/sekolah. | PCQ Statis | Router RB750Gr3, Bandwidth 50Mbps, Suhu ruang 25°C, Beban 20 & 50 user |
+| Treatment | Menggunakan algoritma optimasi otomatis yang di rancang. | Dynamic-Limit PCQ | Router RB750Gr3, Bandwidth 50Mbps, Suhu ruang 25°C, Beban 20 & 50 user |
 
 ---
 
@@ -122,14 +122,14 @@ Evaluasi apakah desain eksperimen di Latihan 1 sudah fair.
 
 | Kriteria | Status | Detail |
 |----------|--------|--------|
-| Dataset identik | *Contoh: ✅ — sama-sama pakai CIC-MalMem-2022* | |
-| Preprocessing setara | | |
-| Tuning effort setara | | |
-| Environment identik | | |
-| Metrik evaluasi sama | | |
+| Dataset identik | ✅ | Dua-duanya diuji pakai beban trafik yang sama (simulasi streaming HD & download file). |
+| Preprocessing setara | ✅ | Semua settingan firewall dan routing di router disamain persis sebelum ganti metode antrian. |
+| Tuning effort setara | ✅ | Parameter PCQ di metode statis udah dioptimalkan dulu biar nggak cupu-cupu banget pas dibandingin. |
+| Environment identik | ✅ | Pengujian dilakukan di jam yang sama buat hindari gangguan frekuensi dari WiFi tetangga. |
+| Metrik evaluasi sama | ✅ | Sama-sama ngukur Throughput (Mbps) dan Latency (ms) pakai software yang sama. |
 
-**Ada yang tidak fair?** [ ] Ya / [ ] Tidak
-> Jika ya, bagaimana cara memperbaikinya? ________________
+**Ada yang tidak fair?** Tidak
+> Semuanya udah dikunci (CV), yang beda cuma satu: algoritma limitasinya doang (IV). Jadi kalau ada beda hasil, itu fix karena algoritmanya.
 
 ---
 
@@ -139,14 +139,14 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
-| Internal | *Contoh: Data leakage antara train-test* | *Contoh: Gunakan stratified split, validasi tidak ada overlap* |
-| External | | |
-| Construct | | |
-| Conclusion | | |
+| Internal | Ada intervensi trafik dari aplikasi latar belakang (update Windows/HP). | Matiin fitur auto-update di semua perangkat klien sebelum pengujian dimulai. |
+| External | Hasilnya mungkin cuma jalan di Mikrotik, nggak di merek lain (TP-Link/Cisco). | Jujur di laporan kalau riset ini spesifik buat RouterOS, tapi logikanya bisa diadaptasi. |
+| Construct | Metrik Throughput rata-rata nggak nunjukin "penderitaan" user yang kena lag parah. | Tambahin metrik Latency (Ping) biar ketauan kalau koneksinya emang beneran stabil, bukan cuma kenceng |
+| Conclusion | Pengulangan tes cuma dikit, takutnya hasilnya cuma kebetulan pas lagi lancar. | Lakuin running tes minimal 10-20 kali per kondisi buat ambil rata-rata statistik yang valid. |
 
-**Ancaman mana yang paling sulit dimitigasi?** _____________
+**Ancaman mana yang paling sulit dimitigasi?** External Validity.
 **Mengapa?**
-> ___________________________________________________
+> Karena spek hardware tiap router beda-beda. Apa yang lancar di Mikrotik seri tinggi belum tentu bisa jalan mulus di seri yang memorinya kecil banget.
 
 ---
 
@@ -155,6 +155,6 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 > Sebuah paper melaporkan "metode kami mengalahkan semua baseline." Apa 3 pertanyaan pertama yang harus diajukan untuk mengevaluasi klaim ini?
 
 **Jawaban:**
-1. ___________________________________________________
-2. ___________________________________________________
-3. ___________________________________________________
+1. Dikasih perlawanan nggak baselinenya? Jangan-jangan pembandingnya nggak di-tuning (pakai default doang) dibanding metode punya penulis.
+2. Environment-nya adil? Dataset yang digunakan hanyalah dataset "titipan" yang sangat cocok dengan algoritmanya sendiri?
+3. Hasilnya kecil atau signifikan secara statistik? Jika ada perbedaan hanya 1-2% tanpa uji statistik, itu mungkin hanya faktor hoki saat pengujian.
