@@ -68,36 +68,37 @@ Ancaman validitas harus diidentifikasi **sebelum** eksperimen dan mitigasinya di
 ```
 EXPERIMENT DESIGN
 
-Research Question : ____________________
-Hypothesis        : ____________________
-Tipe Eksperimen   : [ ] Comparison  [ ] Ablation  [ ] Parameter
+Research Question : Apakah penerapan algoritma Dynamic-Limit pada metode Per Connection Queue (PCQ) mampu menghasilkan nilai Throughput yang lebih stabil dibandingkan PCQ statis saat jumlah pengguna aktif meningkat dari 20 menjadi 50 user pada perangkat Mikrotik?
+Hypothesis        : H0: Saat jumlah pengguna meningkat, nilai throughput PCQ dengan batas dinamis tidak berubah secara signifikan dari PCQ statis.
+                    H1: Dalam kondisi padat, metode PCQ dengan Batas Dinamis menghasilkan throughput rata-rata yang lebih besar secara signifikan (sekurang-kurangnya 20% lebih baik) dibandingkan dengan PCQ statis.
+Tipe Eksperimen   : Comparison
 
 Kondisi Eksperimen:
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control |           |          |             |
-| Treatment |         |          |             |
+| Control | Skenario baseline menggunakan konfigurasi standar | PCQ Statis | Router RB750Gr3, BW 50Mbps, 20 & 50 User, Traffic: Video & Download |
+| Treatment | Skenario dengan implementasi algoritma usulan | Dynamic-Limit PCQ | Router RB750Gr3, BW 50Mbps, 20 & 50 User, Traffic: Video & Download |
 
 Fairness Checklist:
-  [ ] Dataset identik untuk semua kondisi
-  [ ] Preprocessing setara
-  [ ] Tuning effort setara
-  [ ] Environment identik
-  [ ] Metrik evaluasi sama
+  [ ] Dataset identik untuk semua kondisi (Tipe file dan durasi akses disamakan).
+  [ ] Preprocessing setara (Konfigurasi Firewall dan Mangle tidak diubah).
+  [ ] Tuning effort setara (Baseline dikonfigurasi secara optimal sesuai standar admin).
+  [ ] Environment identik (Jam pengujian dan frekuensi WiFi yang sama).
+  [ ] Metrik evaluasi sama (Sama-sama menggunakan Throughput dan Latency).
 
 Threat Analysis:
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
-| Internal    |                 |          |
-| External    |                 |          |
-| Construct   |                 |          |
-| Conclusion  |                 |          |
+| Internal    | Background update otomatis pada perangkat user yang mengganggu data | Mematikan fitur auto-update di setiap perangkat klien sebelum running test |
+| External    | Hasil mungkin berbeda jika dijalankan di router merek lain | Menjelaskan keterbatasan riset bahwa solusi ini spesifik untuk RouterOS (Mikrotik) |
+| Construct   | Metrik Throughput tunggal tidak menggambarkan kepuasan user | Menambahkan metrik Latency dan Jitter untuk mengukur stabilitas koneksi secara utuh |
+| Conclusion  | Variasi data tinggi karena fluktuasi ISP dari pusat | Melakukan pengulangan pengujian (Running Test) sebanyak 10 kali untuk tiap skenario |
 
 Statistical Plan:
-  Uji statistik   : ____________________
-  Justifikasi      : ____________________
-  Alpha            : ____________________
-  Effect size min  : ____________________
+  Uji statistik   : Independent Samples T-Test (atau Wilcoxon jika data tidak normal).
+  Justifikasi      : Untuk membandingkan rata-rata performa dua metode yang berbeda secara signifikan.
+  Alpha            : 0.05 (Tingkat kepercayaan 95%).
+  Effect size min  : 0.5 (Medium effect).
 ```
 
 ---
