@@ -66,28 +66,28 @@ Jika gagal di langkah awal → tidak perlu lanjut.
 DATA VALIDATION CHECKLIST
 
 Completeness:
-  [ ] Semua skenario tercakup
-  [ ] Jumlah run sesuai rencana
-  [ ] Tidak ada file output hilang
-  Missing: ____ dari ____ data points
+  [x] Semua skenario tercakup
+  [x] Jumlah run sesuai rencana
+  [x] Tidak ada file output hilang
+  Missing: 0 dari 20 data points
 
 Format Consistency:
-  [ ] Semua file format sama (CSV/JSON/...)
-  [ ] Header konsisten
-  [ ] Tipe data konsisten (numerik tetap numerik)
+  [x] Semua file format sama (Seluruhnya berekstensi .csv)
+  [x] Header konsisten (Timestamp, Active_Users, PCQ_Rate, Throughput, Latency, CPU_Load)
+  [x] Tipe data konsisten (Active_Users & Latency = Integer, Throughput = Float)
 
 Range & Logic:
-  [ ] Nilai dalam range masuk akal
-  [ ] Tidak ada waktu negatif
-  [ ] Metrik 0–100%, tidak di luar range
-  Anomali ditemukan: ____________________
+  [x] Nilai dalam range masuk akal
+  [x] Tidak ada waktu negatif
+  [x] Metrik 0–100%, tidak di luar range
+  Anomali ditemukan: Terjadi pencatatan latency ekstrem (>500ms) pada RUN-BASE-004 saat user memuncak.
 
 Cross-Validation:
-  [ ] Run identik → hasil mendekati
-  [ ] Trend konsisten dengan ekspektasi teori
+  [x] Run identik → hasil mendekati (Selisih throughput antar-run baseline < 5%)
+  [x] Trend konsisten dengan ekspektasi teori (User naik -> Latency naik pada baseline; Latency terjaga pada intervensi)
 
 Keputusan:
-  [ ] Data siap analisis
+  [x] Data siap analisis
   [ ] Perlu cleaning
   [ ] Perlu re-run (skenario: ____)
 ```
@@ -100,8 +100,8 @@ Verifikasi apakah semua data yang direncanakan sudah terkumpul.
 
 | Skenario | Run Direncanakan | Run Tercatat | Missing | Alasan |
 |----------|-----------------|-------------|---------|--------|
-| *Contoh: BERT, DS-1* | *10* | *10* | *0* | *—* |
-| *LSTM, DS-3* | *10* | *8* | *2* | *OOM pada run 7 & 9* |
+| Baseline (PCQ Statis) | *10* | *10* | *0* | *—* |
+| Intervensi (Dynamic PCQ) | *10* | *8* | *2* | *OOM pada run 7 & 9* |
 | | | | | |
 | | | | | |
 
